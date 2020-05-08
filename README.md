@@ -10,6 +10,7 @@ Visualization 勉強会 by R
 1. Rのインストール
 
 ◆ Windows 32/64bit版
+
 <https://cran.r-project.org/bin/windows/base/R-4.0.0-win.exe>
 
 32bit/64bit ともに同じファイルからインストール可能。
