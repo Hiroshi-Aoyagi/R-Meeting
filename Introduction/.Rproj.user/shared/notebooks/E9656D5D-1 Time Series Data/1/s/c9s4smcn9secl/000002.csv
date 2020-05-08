@@ -1,0 +1,6 @@
+"0","```r
+plot(as.vector(AP), as.vector(Elec),
+     xlab = \"Air Passengers / 1000's\",
+     ylab = \"Electricity Production / MWh\")
+abline(reg = lm(Elec ~ AP))
+```"

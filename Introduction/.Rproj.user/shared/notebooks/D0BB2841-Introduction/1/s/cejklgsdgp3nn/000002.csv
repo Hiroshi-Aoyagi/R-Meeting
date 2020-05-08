@@ -1,0 +1,3 @@
+"0","# aes()の指定の仕方"
+"0","ggplot(data = mpg) +"
+"0","  geom_point(aes(x = displ, y = hwy))"

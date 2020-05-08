@@ -1,0 +1,8 @@
+"0","```r
+# The quarterly exchange rates for British pounds sterling to New Zealand dollars
+# for period Jan 1991 to Mar 2000.
+
+www <- \"./data/pounds_nz.dat\"
+Z <- read.table(www, header = T)
+Z
+```"

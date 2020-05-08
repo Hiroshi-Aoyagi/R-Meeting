@@ -1,0 +1,5 @@
+"0","# ggplot + plotly"
+"0","p <- ggplot(iris) +             # Ctrl + Shift + Enter でチャンク内すべて実行できます"
+"0","  geom_point(aes(Sepal.Length, Sepal.Width, col = Species))"
+"0",""
+"0","ggplotly(p)"

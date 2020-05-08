@@ -1,0 +1,17 @@
+"0","```r
+Comp.hw1$model
+
+```"
+"1","Simple exponential smoothing 
+
+Call:
+ forecast::ses(y = complaints, h = 12, initial = \"simple\") 
+
+  Smoothing parameters:
+    alpha = 0.143 
+
+  Initial states:
+    l = 27 
+
+  sigma:  7.2198
+"

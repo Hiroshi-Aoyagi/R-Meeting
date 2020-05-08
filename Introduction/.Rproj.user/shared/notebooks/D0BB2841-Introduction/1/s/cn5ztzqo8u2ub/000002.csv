@@ -1,0 +1,29 @@
+"0","# とりあえず個別に読み込み"
+"0","file2 <- read_csv(""./sample/file002.txt"", skip = 19, col_names = FALSE)"
+"2","Parsed with column specification:
+cols(
+  X1 = [32mcol_double()[39m,
+  X2 = [32mcol_double()[39m
+)
+"
+"0","file3 <- read_csv(""./sample/file003.txt"", skip = 19, col_names = FALSE)"
+"2","Parsed with column specification:
+cols(
+  X1 = [32mcol_double()[39m,
+  X2 = [32mcol_double()[39m
+)
+"
+"0","file4 <- read_csv(""./sample/file004.txt"", skip = 19, col_names = FALSE)"
+"2","Parsed with column specification:
+cols(
+  X1 = [32mcol_double()[39m,
+  X2 = [32mcol_double()[39m
+)
+"
+"0","file5 <- read_csv(""./sample/file005.txt"", skip = 19, col_names = FALSE)"
+"2","Parsed with column specification:
+cols(
+  X1 = [32mcol_double()[39m,
+  X2 = [32mcol_double()[39m
+)
+"

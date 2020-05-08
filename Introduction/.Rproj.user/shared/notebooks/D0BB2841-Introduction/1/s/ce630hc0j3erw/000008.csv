@@ -1,0 +1,6 @@
+"0","p <- ggplot(file, aes(freq, val, col = label)) +"
+"0","  geom_line() +"
+"0","  scale_x_continuous(name = ""Frequency [Hz]"") +"
+"0","  scale_y_continuous(name = ""Frequency Response Function [(m/s2)/N]"") +"
+"0","  ggtitle(""FRF plot for file X1-X5"")"
+"0","p"

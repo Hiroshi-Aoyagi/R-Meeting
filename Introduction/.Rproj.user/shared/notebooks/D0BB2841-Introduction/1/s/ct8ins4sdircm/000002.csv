@@ -1,0 +1,487 @@
+"0","# 必要なパッケージのインストール - 1回だけやれば次からはOK"
+"0","install.packages(c(""tidyverse"", ""nycflights13"", ""gapminder"", ""Lahman""))"
+"2","Installing packages into ‘/home/aoyagi/R/x86_64-pc-linux-gnu-library/3.6’
+(as ‘lib’ is unspecified)
+"
+"2"," URL 'https://cloud.r-project.org/src/contrib/tidyverse_1.3.0.tar.gz' を試しています 
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 712837 bytes (696 KB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 696 KB
+
+"
+"2"," URL 'https://cloud.r-project.org/src/contrib/nycflights13_1.0.1.tar.gz' を試しています 
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 4504590 bytes (4.3 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 4.3 MB
+
+"
+"2"," URL 'https://cloud.r-project.org/src/contrib/gapminder_0.3.0.tar.gz' を試しています 
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 2110951 bytes (2.0 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 2.0 MB
+
+"
+"2"," URL 'https://cloud.r-project.org/src/contrib/Lahman_7.0-1.tar.gz' を試しています 
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 6168010 bytes (5.9 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 5.9 MB
+
+"
+"2","* installing *source* package ‘tidyverse’ ...
+"
+"2","**  パッケージ ‘tidyverse’ の解凍および MD5 サムの検証に成功しました 
+"
+"2","** using staged installation
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","*** copying figures
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (tidyverse)
+"
+"2","* installing *source* package ‘nycflights13’ ...
+"
+"2","**  パッケージ ‘nycflights13’ の解凍および MD5 サムの検証に成功しました 
+"
+"2","** using staged installation
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (nycflights13)
+"
+"2","* installing *source* package ‘gapminder’ ...
+"
+"2","**  パッケージ ‘gapminder’ の解凍および MD5 サムの検証に成功しました 
+"
+"2","** using staged installation
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","*** copying figures
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (gapminder)
+"
+"2","* installing *source* package ‘Lahman’ ...
+"
+"2","**  パッケージ ‘Lahman’ の解凍および MD5 サムの検証に成功しました 
+"
+"2","** using staged installation
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** demo
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (Lahman)
+"
+"2","
+"
+"2",""
+"2","The downloaded source packages are in
+	‘/tmp/RtmprELBvz/downloaded_packages’"
+"2",""
+"2","
+"
+"0","# tidyverse： データの加工や可視化などを含むパッケージ"
+"0","# nycflights13：ニューヨーク空港のいろいろなデータ"
+"0","# gapminder：世界各国の寿命のデータ"
+"0","# Lahman：メジャーリーグの選手の成績データ"
+"0","install.packages(""plotly"")     # tidyverse に含まれる可視化パッケージ ggplot を拡張するパッケージ"
+"2","Installing package into ‘/home/aoyagi/R/x86_64-pc-linux-gnu-library/3.6’
+(as ‘lib’ is unspecified)
+"
+"2"," URL 'https://cloud.r-project.org/src/contrib/plotly_4.9.2.1.tar.gz' を試しています 
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 3709741 bytes (3.5 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 3.5 MB
+
+"
+"2","* installing *source* package ‘plotly’ ...
+"
+"2","**  パッケージ ‘plotly’ の解凍および MD5 サムの検証に成功しました 
+"
+"2","** using staged installation
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** demo
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","*** copying figures
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (plotly)
+"
+"2","
+"
+"2",""
+"2","The downloaded source packages are in
+	‘/tmp/RtmprELBvz/downloaded_packages’"
+"2",""
+"2","
+"

@@ -1,0 +1,13 @@
+"0","```r
+# the number of letters of complaint received each month by a motoring organisation
+www <- \"./data/motororg.dat\"
+Motor.dat <- read.table(www, header = T)
+attach(Motor.dat)
+```"
+"1"," 以下のオブジェクトは Motor.dat (pos = 4) からマスクされています: 
+
+     complaints 
+"
+"0","```r
+Comp.ts <- ts(complaints, start = c(1996, 1), freq = 12)
+```"

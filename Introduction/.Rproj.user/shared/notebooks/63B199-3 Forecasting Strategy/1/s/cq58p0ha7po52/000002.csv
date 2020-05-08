@@ -1,0 +1,5 @@
+"0","```r
+# S(t)
+plot(Tdelt, Bpdf, xlab = \"Year from 1979\", ylab = \"Sales per year, S(t)\", type = \"l\")
+points(T79, Sales)
+```"

@@ -1,0 +1,12 @@
+"0","```r
+# globa temperatures series, expressed as anormalies from the monthly means over the period 1961-1990.
+www <- \"./data/global.dat\"
+Global <- scan(www) # scanned as vector
+```"
+"1","Read 1800 items
+"
+"0","```r
+# vector to ts object
+Global.ts <- ts(Global, st = c(1856, 1), end = c(2005, 12), fr = 12)
+Global.annual.ts <- aggregate(Global.ts, FUN = mean) # avoid explicitly dividing by 12 with argument \"FUN = mean\"
+```"

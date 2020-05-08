@@ -1,0 +1,4 @@
+"0","```r
+plot(New.Series)
+abline(reg = lm(New.Series ~ New.time))
+```"

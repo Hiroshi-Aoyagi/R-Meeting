@@ -1,0 +1,5 @@
+"0","```r
+layout(1:2)
+plot(Z.92.96, xlab = \"Time (years)\", ylab = \"Quarterly exchange rate in $NZ / pound\")
+plot(Z.96.98, xlab = \"Time (years)\", ylab = \"Quarterly exchange rate in $NZ / pound\")
+```"

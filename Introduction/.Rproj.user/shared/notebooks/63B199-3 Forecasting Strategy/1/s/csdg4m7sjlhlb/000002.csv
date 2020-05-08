@@ -1,0 +1,17 @@
+"0","```r
+Comp.hw3 <- forecast::ses(complaints, alpha = 0.8, h = 12, initial = \"simple\")
+Comp.hw3$model
+```"
+"1","Simple exponential smoothing 
+
+Call:
+ forecast::ses(y = complaints, h = 12, initial = \"simple\", alpha = 0.8) 
+
+  Smoothing parameters:
+    alpha = 0.8 
+
+  Initial states:
+    l = 27 
+
+  sigma:  8.1107
+"

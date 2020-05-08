@@ -1,0 +1,6 @@
+"0","```r
+app.ran <- decompose(App.ts)$random
+app.ran.ts <- window(app.ran, start = c(1996, 3))
+act.ran <- decompose(Act.ts)$random
+act.ran.ts <- window(act.ran, start = c(1996, 3))
+```"

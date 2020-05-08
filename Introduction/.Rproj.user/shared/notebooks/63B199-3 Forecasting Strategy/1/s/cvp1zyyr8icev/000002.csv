@@ -1,0 +1,7 @@
+"0","```r
+Sweetw.ts.log <- ts(log(sweetw), start = c(1990, 1), freq = 12)
+Sweetw.hw3 <- HoltWinters(Sweetw.ts.log)
+Sweetw.hw3$SSE
+```"
+"1","[1] 7.555271
+"

@@ -1,0 +1,364 @@
+---
+title: "R introduction"
+output: 
+ html_notebook:
+   css: font-style.css
+---
+## Rstudio を初めて使うときの設定
+__
+1. Tools > Global Options > General > Workspace > Restore ~ のチェックをはずす  
+2. Tools > Global Options > General > Workspace > Save ~ を Never に変更する  
+__
+
+1は前回Rを実施したときの状態を .RData ファイルから復元するか？という設定で、チェックをはずすとそれをしなくなります。  
+2は前回Rを実施したときの状態を .RData ファイルに保存するか？という設定で、Never にすると保存しなくなります。  
+
+これらの設定は人の流儀によるので必須ではありませんが、Rではコマンドを残しながら実行するので、前回の履歴はコマンドとして残すようにしておけば、わざわざデータとして残しておく必要がありません。またそれに慣れておいた方が見返すので上達も早くすると思いますので設定をはずしています。
+
+## Rstudio での R の実行方法
+
+__
+1.  コンソール（このパネルの左下に "Console" とある部分）に逐次コマンドを打ち込む - あまりやらない  
+2.  ノートブック（このファイル）上で実行する  
+3.  スクリプトファイル上で実行する  
+__
+
+通常、一連の処理をやりたいときは 3 の方法が良い。だが処理が問題なく流れることが前提。  
+いろいろ考えながら処理を組み上げたいときは、2 がおすすめ。これ以降に示すようにメモ書きや試行錯誤の結果を残しながら組んでいくことができるため。  
+
+まとめると...
+
+<big>
+スクリプトを試行錯誤して組み上げるとき：ノートブックを使う  
+組み上げて完成したスクリプトを実行するとき：File > New File > R Script からスクリプトファイルを新規作成して実行する  
+</big>
+
+この勉強会でも基本的には、メモ取れた方が良いと思いますのでノートブックで進めたいと思います。
+
+※参考 - スクリプト、コード、プログラム...
+　どれも同じようなものだと思っていて問題ありません。要は処理を支持する命令の連なりです。
+
+## ノートブック（このファイル）の使い方
+
+ノートブックは、File > New File > R Notbook から追加することができ、このノートブックの中でRコードを実行すると、その下に実行結果が表示されます。
+
+次のコードを実行してみましょう。実行はチャンク内の *Run* ボタン（チャンク右上の▶）か、チャンクの中にカーソルを移動して *Ctrl + Shift + Enter* のいずれかで実行できます。
+
+```{r}
+# これがチャンクです
+plot(cars)  # R コマンド  Ctrl + Enter で実行
+```
+
+ツールバー（右上）にある *Insert > R* をクリックするか、*Ctrl + Alt + I* を実行すると、新しいチャンクを追加することができます。
+
+ノートブックを保存すると、それに含まれるコードとその実行結果を含む HTML ファイルが同時に保存されます。 ツールバーの *Preview* ボタンをクリックするか、*Ctrl + Shift+K* を実行することでプレビューを表示することもできます。
+
+プレビューは HTML のコピーですが、実行されてないチャンクについては実行前の状態で出力されます。そのため、HTML プレビューを表示する前に、表示したいチャンクはすべて実行しておきましょう。すべてのチャンクを初めから一括して実行するには、ツールバーの *Run > Run All* をクリックするか、*Ctrl + Alt + R* を実行します。
+
+R Markdown 機能のリファレンス（英語）：  
+ Help > CheatSheets > R Markdown Cheat Sheets
+ Help > CheatSheets > R Markdown Reference Guide  
+
+>参考：
+ノートブックでファイルを作成しておくと、ファイルを保存したときに同時にhtmlファイルも作成されます。htmlファイルはブラウザで普通に開けますのでそっちを見てもらうと完成形が見れます。  
+
+
+
+## パッケージのインストール
+
+パッケージとは、base R に機能を付加するアドオンモジュール。Rはオープンソースなので世界中の人が開発したパッケージが多数あり、誰でも利用できます。パッケージのリストは  [Cotributed R Packages](https://cran.r-project.org/web/packages/available_packages_by_date.html)にありますので時間があるときに覗いて見てください。  
+
+## オリジナルの R - base R
+
+何もインストールしてない状態："base R"。これだけでも可視化や統計処理、データ加工などいろんなことができる。
+
+```{r}
+iris   # base R のデータサンプル。←のように入力して　Ctrl + Enter を押すと中身が表示される
+```
+
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width)  # Ctrl + Enter を押す（以下省略）
+```
+
+```{r}
+mean(iris$Sepal.Length)
+```
+
+```{r}
+sd(iris$Sepal.Width)
+```
+
+
+冒頭の plot(cars) もbase R の同じ機能を使用した。見た感じちょっと洗練されてない感じである。見栄えを変更する方法はあるが、ちょっと大変なので別の手段（パッケージ）を使うのが良い。
+
+## tidyverse パッケージ
+
+最近人気のパッケージ。base R にアドオンするようなイメージでインストールすると使える。インストールするにはインターネットから必要なデータをダウンロードするのでネットに繋がっている必要がある。  
+
+```{r}
+# 必要なパッケージのインストール - 1回だけやれば次からはOK
+install.packages(c("tidyverse", "nycflights13", "gapminder", "Lahman"))
+
+# tidyverse： データの加工や可視化などを含むパッケージ
+# nycflights13：ニューヨーク空港のいろいろなデータ
+# gapminder：世界各国の寿命のデータ
+# Lahman：メジャーリーグの選手の成績データ
+install.packages("plotly")     # tidyverse に含まれる可視化パッケージ ggplot を拡張するパッケージ
+```
+
+↑チャンク内のコマンドを全部一括に実行するときは、__Ctrl+ Shift + Enter__ を実行する。
+
+```{r}
+# ライブラリをロードしないと使えない
+library(tidyverse)
+```
+
+tidyverse 自体もいろいろなパッケージの集合体になっている。ggplot2, purrr, tibble, ... , forcats はすべてパッケージの名前（バージョンも併記されている）。
+
+```{r}
+# 使用例（次回以降詳しく説明するのでまずは実行してみよう！）
+ggplot(iris) +
+  geom_point(aes(Sepal.Length, Sepal.Width, col = Species))
+```
+
+base R の plot より洗練されている（と思う）。
+
+ggplot2 機能のリファレンス（英語）：  
+ Help > CheatSheets > Data visualization with ggplot2
+
+## plotly パッケージ
+
+plotly を組み合わせるともっとデータ分析が楽になる。
+
+```{r}
+library(plotly)
+```
+
+```{r}
+# ggplot + plotly
+p <- ggplot(iris) +             # Ctrl + Shift + Enter でチャンク内すべて実行できます
+  geom_point(aes(Sepal.Length, Sepal.Width, col = Species))
+
+ggplotly(p)
+```
+
+## できるようになること
+
+* いろいろな可視化
+* 可視化したいデータのフォーマット
+* 計測データを可視化に適したフォーマットに加工する方法
+
+各詳細は次回以降ということで、今回は一巡りしてみます。いろいろ疑問が湧くと思いますが、まずはゴールのイメージを持ってほしいので流してみてください。
+
+## いろいろな可視化
+
+とりあえずやってみましょう。
+
+```{r}
+# ggplot2 に含まれているデータサンプル
+mpg
+```
+
+```{r}
+# ベースとなるプロット
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+```{r}
+# ベースに色付け
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(col = "blue")
+```
+
+```{r}
+mpg
+```
+
+```{r}
+# クラスによる色付け
+ggplot(data = mpg, aes(x = displ, y = hwy, col = class)) +
+  geom_point()
+```
+
+```{r}
+# クラスによる色付け＋マーカーサイズ＋透明度
+ggplot(data = mpg, aes(x = displ, y = hwy, col = class)) +
+  geom_point(size = 3, alpha = 0.5)
+```
+
+```{r}
+# クラスによるマーカーシェイプ変更＋サイズ変更
+ggplot(data = mpg, aes(x = displ, y = hwy, shape = class)) +
+  geom_point(size = 3)
+```
+
+```{r}
+ggplot(mpg, aes(displ, hwy, size = cyl, col = cyl)) +
+  geom_point()
+```
+
+
+```{r}
+# ベース（再度）
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+```{r}
+# ファセット
+ggplot(mpg, aes(displ, hwy, col = class)) +
+  geom_point(size = 1.5) +
+  facet_wrap(~class, nrow = 2)
+```
+
+```{r}
+# ファセットグリッド
+ggplot(mpg, aes(displ, hwy, col = class)) +
+  geom_point(size = 2, alpha = 0.5) +
+  facet_grid(cyl~drv)
+```
+
+
+```{r}
+# aes()の指定の仕方
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy))
+ggsave("test.png", width = 10, height = 6, unit = "cm")
+```
+
+* エステティック属性 aes() は ggplot() でも geom_point() でもどっちでも良い。  
+* ggplot()で指定した場合はその後の geom すべてに適用される。  
+* geom の中で指定した場合は、その geom の中にだけ適用される。  
+
+## 可視化したいデータのフォーマット
+
+```{r}
+mpg
+View(mpg)
+```
+
+```{r}
+diamonds
+View(diamonds)
+```
+
+ggplotで利用しやすいフォーマットは、__1行1レコード__ 。
+
+```{r}
+# 1行1レコードでない例（作り方はまだ理解しなくてOK）
+
+n <- 20                             　 # サンプルデータの長さを指定（nに20を代入）
+bad_sample <- tibble(
+  time = seq(0, 10, length.out = n),   # 0から10まで、長さ n で等分割したデータ生成
+  x = rnorm(n, 0, 1),                  # 平均0、標準偏差1の正規分布に従う長さ n のデータ生成
+  y = rnorm(n, 3, 2)                   # 平均3、標準偏差2の正規分布に従う長さ n のデータ生成
+)
+
+bad_sample
+View(bad_sample)
+```
+
+```{r}
+# bad_sampleでも可視化できないことはない
+ggplot(bad_sample) +
+  geom_line(aes(time, x), col = "blue") + 
+  geom_line(aes(time, y), col = "red")
+```
+
+>扱いにくいと思う点：
+* データラベルごとに geom の aes で x, y のデータをいちいち指定する必要がある
+* グラフの凡例が出ない
+
+```{r}
+# bad_sample を加工して可視化しやすくする（やり方はまだ理解しなくてOK）
+
+good_sample <- bad_sample %>%
+  gather(x, y, key = label, value = val)
+```
+
+```{r}
+good_sample
+View(good_sample)
+```
+
+
+```{r}
+ggplot(good_sample, aes(time, val, col = label)) +
+  geom_hline(yintercept = 3, size = 1) +   # 水平線を描く
+  geom_line() +
+  geom_point(size = 5)
+```
+
+## 計測データを可視化に適したフォーマットに加工する方法
+
+計測データは普通、前項の bad_sample のようなフォーマットになっている（と思う）。そのため同じように加工する必要がある。
+
+前提として外部データを取り込む必要がある。
+
+```{r}
+# データの取り込み
+file1 <- read_csv("./sample/file001.txt", skip = 19, col_names = FALSE)
+# read_csv：csvデータを読み込むためのコマンド。カンマ区切りなら拡張子はcsv以外でも良い。
+# "./sample/file001.txt"：読み込むファイル名の指定。
+# skip = 19：冒頭19行までは読み込まない
+# col_names = FALSE：列名は読み込まない
+
+file1
+```
+
+```{r}
+# とりあえず個別に読み込み
+file2 <- read_csv("./sample/file002.txt", skip = 19, col_names = FALSE)
+file3 <- read_csv("./sample/file003.txt", skip = 19, col_names = FALSE)
+file4 <- read_csv("./sample/file004.txt", skip = 19, col_names = FALSE)
+file5 <- read_csv("./sample/file005.txt", skip = 19, col_names = FALSE)
+```
+
+```{r}
+# データをひとつのデータフレームにまとめる
+file <- tibble(
+  freq = file1$X1,
+  X1 = file1$X2,
+  X2 = file2$X2,
+  X3 = file3$X2,
+  X4 = file4$X2,
+  X5 = file5$X2
+)
+file
+
+```
+
+まだ bad_sample のようになっている。
+
+```{r}
+# ggplot2 で扱いやすいように加工する
+file <- file %>%
+  gather(-freq, key = label, val = val)
+file
+```
+
+
+```{r fig.width = 10, fig.height=6}
+p <- ggplot(file, aes(freq, val, col = label)) +
+  geom_line() +
+  scale_x_continuous(name = "Frequency [Hz]") +
+  scale_y_continuous(name = "Frequency Response Function [(m/s2)/N]") +
+  ggtitle("FRF plot for file X1-X5")
+p
+ggsave("frf.png", width = 20, height = 12, unit = "cm")
+```
+
+```{r fig.width = 10, fig.height=6}
+# plotlyと組み合わせ
+ggplotly(p)
+```
+
+```{r}
+diamonds
+```
+
+```{r}
+ggplot(diamonds, aes(carat, price, col = cut)) +
+  geom_point()
+```

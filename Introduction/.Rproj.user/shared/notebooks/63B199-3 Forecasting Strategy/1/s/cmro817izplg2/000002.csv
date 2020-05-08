@@ -1,0 +1,33 @@
+"0","```r
+# yearly sales of VCRs in the US home market between 1980 and 1989
+# T79: the year from 1979
+# Tdelt: the time from 1979 at a finer resolution of 0.1 year for plotting the Bass curves
+
+T79 <- 1:10
+Tdelt <- 1:100 / 10
+
+Sales <- c(840, 1470, 2110, 4000, 7590, 10950, 10530, 9470, 7790, 5890)
+Cusales <- cumsum(Sales)
+
+# fitting by nls: non-linear least squares function
+Bass.nls <- nls(Sales ~ M * ( ((P+Q)^2 / P) * exp(-(P+Q) * T79) ) / (1+(Q/P) * exp(-(P+Q) * T79))^2,
+                start = list(M = 60630, P = 0.03, Q = 0.38))
+summary(Bass.nls)
+```"
+"1","
+Formula: Sales ~ M * (((P + Q)^2/P) * exp(-(P + Q) * T79))/(1 + (Q/P) * 
+    exp(-(P + Q) * T79))^2
+
+Parameters:
+   Estimate Std. Error t value Pr(>|t|)    
+M 6.798e+04  3.128e+03   21.74 1.10e-07 ***
+P 6.594e-03  1.430e-03    4.61  0.00245 ** 
+Q 6.381e-01  4.140e-02   15.41 1.17e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 727.2 on 7 degrees of freedom
+
+Number of iterations to convergence: 8 
+Achieved convergence tolerance: 7.323e-06
+"

@@ -1,0 +1,9 @@
+"0","```r
+# average
+Feb.ratio <- mean(Maine.Feb) / mean(Maine.month.ts)
+Aug.ratio <- mean(Maine.Aug) / mean(Maine.month.ts)
+Feb.ratio; Aug.ratio
+```"
+"1","[1] 1.223
+[1] 0.8164
+"

@@ -1,0 +1,6 @@
+"0","```r
+Time <- 1:370
+x <- sin(2 * pi * Time / 37)
+y <- sin(2 * pi * (Time + 4) / 37)
+ccf(x, y, lag.max = 100)
+```"

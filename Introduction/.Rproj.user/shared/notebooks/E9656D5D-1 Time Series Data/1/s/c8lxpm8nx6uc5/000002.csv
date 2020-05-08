@@ -1,0 +1,7 @@
+"0","```r
+www <- \"./data/cbe.dat\"  # The monthly supply of electricity (millions of kWh), beer(MI),
+                         # and chocolate-based production (tonnes) in Australia over the period
+                         # January 1958 to December 1990.
+CBE <- read.table(www, header = T)
+CBE[1:4, ]
+```"

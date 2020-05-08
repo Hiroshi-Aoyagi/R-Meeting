@@ -1,0 +1,6 @@
+"0","```r
+attach(df)
+(LI <- sum(q_0 * p_t) / sum(q_0 * p_0))  # The Laspeyre Price Index (LI)
+```"
+"1","[1] 1.358
+"

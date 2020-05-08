@@ -1,0 +1,5 @@
+"0","```r
+layout(1:2)
+plot(Choc.ts)
+plot(Choc.annual.ts)
+```"

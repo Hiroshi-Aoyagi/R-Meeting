@@ -1,0 +1,4 @@
+"0","```r
+options(digits = 4)
+# knitr::opts_chunk$set(fig.width=15, fig.height=5) 
+```"

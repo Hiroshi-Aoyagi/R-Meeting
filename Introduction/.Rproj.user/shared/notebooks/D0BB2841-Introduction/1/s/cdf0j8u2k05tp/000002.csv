@@ -1,0 +1,4 @@
+"0","# bad_sample を加工して可視化しやすくする（やり方はまだ理解しなくてOK）"
+"0",""
+"0","good_sample <- bad_sample %>%"
+"0","  gather(x, y, key = label, value = val)"

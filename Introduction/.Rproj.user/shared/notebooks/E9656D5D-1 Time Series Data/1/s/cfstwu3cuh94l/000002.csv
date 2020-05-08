@@ -1,0 +1,5 @@
+"0","```r
+layout(1:2)
+plot(aggregate(AP))  # aggreagting: remove seasonal component
+boxplot(AP ~ cycle(AP))
+```"
