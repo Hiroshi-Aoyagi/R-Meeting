@@ -1,0 +1,4 @@
+"0","```r
+# decompose time series to trends and seasonal effects using a moving average method
+plot(decompose(Elec.ts))
+```"

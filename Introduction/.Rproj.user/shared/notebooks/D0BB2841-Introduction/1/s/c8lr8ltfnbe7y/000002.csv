@@ -1,0 +1,14 @@
+"0","# データの取り込み"
+"0","file1 <- read_csv(""./sample/file001.txt"", skip = 19, col_names = FALSE)"
+"2","Parsed with column specification:
+cols(
+  X1 = [32mcol_double()[39m,
+  X2 = [32mcol_double()[39m
+)
+"
+"0","# read_csv：csvデータを読み込むためのコマンド。カンマ区切りなら拡張子はcsv以外でも良い。"
+"0","# ""./sample/file001.txt""：読み込むファイル名の指定。"
+"0","# skip = 19：冒頭19行までは読み込まない"
+"0","# col_names = FALSE：列名は読み込まない"
+"0",""
+"0","file1"

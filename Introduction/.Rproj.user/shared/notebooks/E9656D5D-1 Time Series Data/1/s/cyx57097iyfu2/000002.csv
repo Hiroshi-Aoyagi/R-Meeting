@@ -1,0 +1,3 @@
+"0","```r
+boxplot(Choc.ts ~ cycle(Choc.ts), xlab = \"Month\")
+```"

@@ -1,0 +1,4 @@
+"0","# ファセット"
+"0","ggplot(mpg, aes(displ, hwy, col = class)) +"
+"0","  geom_point(size = 1.5) +"
+"0","  facet_wrap(~class, nrow = 2)"

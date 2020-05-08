@@ -1,0 +1,8 @@
+"0","```r
+# The monthly unemployment rate for all of the United States
+www <- \"./data/USunemp.dat\"
+US.month <- read.table(www, header = T)
+attach(US.month)
+US.month.ts <- ts(USun, start = c(1996, 1), end = c(2006, 10), freq = 12)
+plot(US.month.ts, ylab = \"unemployed (%)\")
+```"

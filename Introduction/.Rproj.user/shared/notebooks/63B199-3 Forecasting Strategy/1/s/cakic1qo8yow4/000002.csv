@@ -1,0 +1,10 @@
+"0","```r
+# visualization
+Bcoef <- coef(Bass.nls)
+m <- Bcoef[1]
+p <- Bcoef[2]
+q <- Bcoef[3]
+
+Bpdf <- m * ( (p+q)^2 /p ) * exp(-(p+q) * Tdelt) / (1 + (q/p) * exp(-(p+q) * Tdelt))^2
+Bcdf <- m * (1-exp(-(p+q) * Tdelt)) / (1 + (q/p) * exp( -(p+q) * Tdelt))
+```"

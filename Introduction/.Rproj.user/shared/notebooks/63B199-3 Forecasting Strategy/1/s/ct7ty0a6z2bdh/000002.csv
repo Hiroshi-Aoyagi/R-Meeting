@@ -1,0 +1,36 @@
+"0","```r
+# manual code
+t <- seq(0, 1, length.out = 16)
+x <- sin(2*pi*t)
+y <- cos(2*pi*t)
+
+## define function ccvf: cross covariance function
+ccvf <- function(x, y, k){
+  n <- length(x)
+  if(k >= 0){         # lag
+    xx <- x[(k+1):n]
+    yy <- y[1:(n-k)]
+  } else if(k < 0){   # lead
+    xx <- x[1:(n-(-k))]
+    yy <- y[(-k+1):n]
+  }
+  ckxy <- mean(sum((xx - mean(x)) * (yy - mean(y))))
+  return(ckxy)
+}
+
+k <- 9
+c0.x <- mean(sum( (x - mean(x))^2 ))
+c0.y <- mean(sum( (y - mean(y))^2 ))
+
+rkxy <- numeric(0)
+for(i in -k:k){
+  rkxy[i+k+1] <- ccvf(x,y,i)/sqrt(c0.x * c0.y)
+}
+
+## ccf by stats::ccf
+
+data.frame(
+  rkxy = rkxy,
+  ccf = ccf(x,y, plot = FALSE)$acf
+)
+```"

@@ -1,0 +1,31 @@
+"0","```r
+Sweet.hw
+
+```"
+"1","Holt-Winters exponential smoothing with trend and multiplicative seasonal component.
+
+Call:
+HoltWinters(x = Sweetw.ts, seasonal = \"mult\")
+
+Smoothing parameters:
+ alpha: 0.4086698
+ beta : 0
+ gamma: 0.4929402
+
+Coefficients:
+           [,1]
+a   285.6890314
+b     1.3509615
+s1    0.9498541
+s2    0.9767623
+s3    1.0275900
+s4    1.1991924
+s5    1.5463100
+s6    0.6730235
+s7    0.8925981
+s8    0.7557814
+s9    0.8227500
+s10   0.7241711
+s11   0.7434861
+s12   0.9472648
+"

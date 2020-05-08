@@ -1,0 +1,4 @@
+"0","ggplot(good_sample, aes(time, val, col = label)) +"
+"0","  geom_hline(yintercept = 3, size = 1) +"
+"0","  geom_line() +"
+"0","  geom_point(size = 5)"

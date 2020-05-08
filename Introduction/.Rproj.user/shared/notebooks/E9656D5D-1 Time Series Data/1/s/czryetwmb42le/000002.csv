@@ -1,0 +1,5 @@
+"0","```r
+layout(1:2)
+plot(Global.ts, main = \"Monthly Global tempearture change\")
+plot(Global.annual.ts, main = \"Yearly Global tempearture change\")
+```"

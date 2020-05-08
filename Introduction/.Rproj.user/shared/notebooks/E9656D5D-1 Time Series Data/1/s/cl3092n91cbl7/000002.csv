@@ -1,0 +1,6 @@
+"0","```r
+# data.frame to ts object
+Elec.ts <- ts(CBE[, 3], start = 1958, freq = 12) # omitting end argument, the full length vector used
+Beer.ts <- ts(CBE[, 2], start = 1958, freq = 12)
+Choc.ts <- ts(CBE[, 1], start = 1958, freq = 12)
+```"

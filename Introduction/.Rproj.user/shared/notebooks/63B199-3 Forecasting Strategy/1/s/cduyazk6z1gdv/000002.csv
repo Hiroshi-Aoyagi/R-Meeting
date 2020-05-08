@@ -1,0 +1,7 @@
+"0","```r
+# Coefficients: the estimated value of the mean number of letter of complaints per month at the end of 1999
+Comp.hw1$mean[1]
+
+```"
+"1","[1] 17.7035
+"

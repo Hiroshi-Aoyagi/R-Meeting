@@ -1,0 +1,5 @@
+"0","```r
+Trend <- Elec.decom$trend
+Seasonal <- Elec.decom$seasonal
+ts.plot(cbind(Trend, Trend * Seasonal), lty = 1:2)  # Trend * Seasonal : random component is removed from original time series
+```"

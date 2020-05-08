@@ -1,0 +1,14 @@
+"0","```r
+# Building approvals for each month and the value of work done over the past three months (in millions of Australian dollars)
+www <- \"./data/ApprovActiv.dat\"
+Build.dat <- read.table(www, header = T)
+attach(Build.dat)
+```"
+"1"," 以下のオブジェクトは Build.dat (pos = 4) からマスクされています: 
+
+     Activity, Approvals 
+"
+"0","```r
+App.ts <- ts(Approvals, start = c(1996, 1), freq = 4)
+Act.ts <- ts(Activity, start = c(1996, 1), freq = 4)
+```"

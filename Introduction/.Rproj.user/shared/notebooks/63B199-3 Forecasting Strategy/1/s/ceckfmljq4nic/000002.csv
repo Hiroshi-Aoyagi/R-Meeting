@@ -1,0 +1,9 @@
+"0","```r
+# SS1PE, square mean of SS1PE
+Sweet.hw$SSE; sqrt(Sweet.hw$SSE/length(sweetw)); sd(sweetw)
+
+```"
+"1","[1] 477693.9
+[1] 50.54219
+[1] 121.3908
+"

@@ -1,0 +1,6 @@
+"0","```r
+w <- 1:100
+x <- w + k * rnorm(100)
+y <- w + k * rnorm(100)
+ccf(x,y, lag.max = 100)
+```"

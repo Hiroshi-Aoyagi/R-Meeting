@@ -1,0 +1,8 @@
+"0","```r
+# plot
+AP <- AP.elec[, 1]
+Elec <- AP.elec[, 2]
+layout(1:2)
+plot(AP, main = \"\", ylab = \"Air Paserngers / 1000's\")
+plot(Elec, main = \"\", ylab = \"Electricity Production / MWh\")
+```"

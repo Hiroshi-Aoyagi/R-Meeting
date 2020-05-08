@@ -1,0 +1,5 @@
+"0","```r
+Trend <- decompose(Choc.ts)$trend
+Seasonal <- decompose(Choc.ts)$seasonal
+ts.plot(cbind(Trend, Trend + Seasonal), col = 1:2)
+```"

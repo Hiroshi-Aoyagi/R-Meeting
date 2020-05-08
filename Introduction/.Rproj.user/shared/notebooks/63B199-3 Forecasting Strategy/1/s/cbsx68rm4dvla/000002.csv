@@ -1,0 +1,5 @@
+"0","```r
+# h(t)
+plot(Tdelt, (Bpdf/m)/(1-(Bcdf/m)), xlab = \"Year from 1979\", ylab = \"Hazard, h(t)\", type = \"l\")
+points(T79, Cusales)
+```"

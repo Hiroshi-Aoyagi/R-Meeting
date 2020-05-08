@@ -1,0 +1,11 @@
+"0","```r
+# The intersection between the AirPassenger (AP) and the electricity data
+AP.elec <- ts.intersect(AP, Elec.ts)  # AP: Jan 1949 - Dec 1960
+                                      # Elec.ts: Jan 1958 - Dec 1990
+
+class(AP.elec); start(AP.elec); end(AP.elec)
+```"
+"1","[1] \"mts\"    \"ts\"     \"matrix\"
+[1] 1958    1
+[1] 1960   12
+"

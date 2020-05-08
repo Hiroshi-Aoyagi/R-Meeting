@@ -1,0 +1,4 @@
+"0","# ファセットグリッド"
+"0","ggplot(mpg, aes(displ, hwy, col = class)) +"
+"0","  geom_point(size = 2, alpha = 0.5) +"
+"0","  facet_grid(cyl~drv)"

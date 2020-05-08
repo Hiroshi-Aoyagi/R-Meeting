@@ -1,0 +1,1 @@
+"0","plot(iris$Sepal.Length, iris$Sepal.Width)  # Ctrl + Enter を押す（以下省略）"

@@ -1,0 +1,4 @@
+"0","# bad_sampleでも可視化できないことはない"
+"0","ggplot(bad_sample) +"
+"0","  geom_line(aes(time, x), col = ""blue"") + "
+"0","  geom_line(aes(time, y), col = ""red"")"

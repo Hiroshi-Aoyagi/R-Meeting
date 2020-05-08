@@ -1,0 +1,5 @@
+"0","```r
+(PI <- sum(q_t * p_t) / sum(q_t * p_0)) # The Paasche Price Index (PI)
+```"
+"1","[1] 1.25
+"

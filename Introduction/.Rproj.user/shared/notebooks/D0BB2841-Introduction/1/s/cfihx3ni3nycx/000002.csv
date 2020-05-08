@@ -1,0 +1,4 @@
+"0","# ggplot2 で扱いやすいように加工する"
+"0","file <- file %>%"
+"0","  gather(-freq, key = label, val = val)"
+"0","file"
