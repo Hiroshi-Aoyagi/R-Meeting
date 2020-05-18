@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589778661139.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3650779262",
+    "id" : "25950DAC",
+    "lastKnownWriteTime" : 1589790191,
+    "last_content_update" : 1589790191306,
+    "path" : "~/R/Meeting/1 Knowing geom/Level1 - Knowing geom.Rmd",
+    "project_path" : "Level1 - Knowing geom.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "303,8",
+        "scrollLine" : "302",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

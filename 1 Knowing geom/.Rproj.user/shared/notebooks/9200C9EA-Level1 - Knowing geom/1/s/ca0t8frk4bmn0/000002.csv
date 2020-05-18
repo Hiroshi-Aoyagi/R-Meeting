@@ -1,0 +1,3 @@
+"0","# 箱ひげ図：色分け"
+"0","ggplot(mpg, aes(class, hwy, fill = class)) +"
+"0","         geom_boxplot()"
