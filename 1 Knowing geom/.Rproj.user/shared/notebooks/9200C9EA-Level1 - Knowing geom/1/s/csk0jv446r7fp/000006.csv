@@ -1,0 +1,3 @@
+"0","# マーカーの色をすべて同じ色に変える"
+"0","ggplot(data = mpg) +  # displ：排気量, hwy：高速道路での燃費（マイル/ガロン） "
+"0","  geom_point(aes(x = displ, y = hwy), col = ""red"")  # col を aes() の外に出す"
