@@ -1,3 +1,0 @@
-"0","ggplot(df, aes(time, x)) +"
-"0","  geom_line(col = ""red"") +    　# geom_line を先に実行"
-"0","  geom_point(size = 2)"

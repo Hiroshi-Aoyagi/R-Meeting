@@ -1,3 +1,0 @@
-"0","# 基本"
-"0","ggplot(data = mpg, aes(x = displ, y = hwy, col = class)) +  # displ：排気量, hwy：高速道路での燃費（マイル/ガロン） "
-"0","  geom_point()"

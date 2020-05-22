@@ -1,2 +1,0 @@
-"0","ggplot(mpg) +  # displ：排気量, hwy：高速道路での燃費（マイル/ガロン） "
-"0","  geom_point(aes(displ, hwy, col = class), position = ""jitter"")"
