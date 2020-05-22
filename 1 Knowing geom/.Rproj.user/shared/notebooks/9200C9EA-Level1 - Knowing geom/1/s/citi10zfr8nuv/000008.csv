@@ -1,3 +1,0 @@
-"0","# geom_jitter"
-"0","ggplot(mpg) + "
-"0","  geom_jitter(aes(displ, hwy, col = class))"

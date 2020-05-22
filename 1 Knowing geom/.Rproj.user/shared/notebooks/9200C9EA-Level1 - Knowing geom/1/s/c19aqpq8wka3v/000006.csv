@@ -1,3 +1,0 @@
-"0","# データの描画"
-"0","ggplot(df, aes(time, x)) +"
-"0","  geom_point(size = 2)"

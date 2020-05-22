@@ -301,13 +301,202 @@ ggplot(price.mean, aes(fill = cut)) +          # geom_bar も fill で色分け�
   geom_bar(aes(cut, price), stat = "identity")
 ```
 
+縦軸カウントの棒グラフに戻ると、いろいろできます。次の例は、積み上げ棒グラフです。 fill を指定しているところがポイントです。
+
+```{r}
+# 積み上げ棒グラフ
+ggplot(diamonds, aes(x = cut, fill = clarity)) +
+  geom_bar()
+```
+
+縦軸がカウントになっていて、絶対数での比較ができますが、割合で比較したいこともあると思います。その場合は次のようになります。  
+
+```{r}
+# 積み上げ棒グラフ - 割合
+ggplot(diamonds, aes(x = cut, fill = clarity)) +
+  geom_bar(position = "fill")       # position = "fill" を指定
+```
+
+縦軸のラベルが count のままですが、0-1になっていることに注意してください。  
+もう一つの例は、積み上げではなくて横にならべるタイプです。こちらも　position 引数で変更可能です。  
+
+
+```{r}
+# 積み上げ棒グラフ
+ggplot(diamonds, aes(x = cut, fill = clarity)) +
+  geom_bar(position = "dodge")    # position = "dodge" を指定
+```
+
+## geom_histogram, geom_freqpoly - 分布を確認する
+
+geom_bar は、横軸が離散変数になっていたのに気づいたでしょうか。次は横軸が連続変数の場合のカウントデータのグラフです。  
+
+```{r}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(fill = "purple", bins = 20, col = "black")
+```
+
+お気づきのとおり、横軸の区分けの数は、bins で指定しています。指定数を変えると見え方が変わるので、試してみてください。また、区分けの数ではなくて、区分けの幅で指定したいときもあると思います。この場合は、bins の代わりに binwidth を使います。
+
+```{r}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(fill = "purple", binwidth = 500, col = "black")
+```
+
+実験データに対する使い方としては、例えば測定値がある一定の数の範囲に収まっているか知りたいときに使います。  
+
+```{r}
+x <- tibble(val = rnorm(10000, mean = 0, sd = 1))    # 標準正規分布にしたがう乱数を10000個生成
+ggplot(x, aes(val)) +
+  geom_histogram(col = "black", fill = "green")
+```
+
+当たり前ですが、正規分布にしたがってそうです。分布の形や、平均値（または中央値）の値を可視化することで、思った通りの分布のデータが得られているか、平均値や分布の形に偏りがないかを確認することができます。ちなみに同じ用途で geom_boxplot も使えますが、geom_boxplot では頻度までは表現していないのでこちらの方がわかりやすいことが多いと思います。  
+
+参考：平均値や標準偏差を求める  
+
+```{r}
+# 平均値
+mean(x$val)
+```
+
+```{r}
+# 標準偏差
+sd(x$val)
+```
+
+```{r}
+# 分位点を求める
+summary(x$val)
+```
+
+ほかにも、median（中央値）、var（分散）などを求める関数があります。  
+
+
+ところで、diamonds の価格（price）は、cut や clarity の影響を受けていると思われます。さきほど描いた図はこれらの区別なくカウントしたデータのヒストグラムなので、その辺の区別をしたいことがあります。今までの知識を使うと、下のように実行すればできそうですが、、、  
+
+```{r}
+ggplot(diamonds, aes(price, fill = cut)) +
+  geom_histogram(col = "black")
+```
+
+ヒストグラムが重なっちゃってよくわからないですね。こういうときはに geom_freqpoly を使います。  
+
+```{r}
+ggplot(diamonds, aes(price, col = cut)) +
+  geom_freqpoly()
+```
+
+この場合、ヒストグラムのように棒グラフではなく、線グラフでそれぞれの分布が描かれますので、区別ができます。ちなみに線が細くてわかりづらい、という場合は、
+
+```{r}
+ggplot(diamonds, aes(price, col = cut)) +
+  geom_freqpoly(size = 1)        # size を追加
+```
+
+## geom_count, geom_tile, geom_bin2d - 3軸グラフ または ヒートマップ  
+
+面内でグラフを書く以上、2軸が基本ですが、Rでは5軸まで可能です。が、実際解釈しやすいのは3軸までではないでしょうか。ということで3軸の書き方の例を紹介します。まずは geom_count から。縦軸、横軸ともに離散変数であることに留意してください。  
+
+```{r}
+# geom_count
+ggplot(diamonds) +
+  geom_count(aes(cut, color))
+```
+
+これは縦軸、横軸が離散変数で、マーカーの大きさによって数を表すグラフです。ちなみに、各点の具体的な数値は以下のコードで確認できます。cut が 5 水準、color が 7 水準あるので 35 個出てきます。今後説明する内容を含みますが、まだ理解できなくてもOKです。  
+```{r}
+# 変数の組み合わせごとのデータをカウントする
+diamonds %>%
+  count(cut, color)
+```
+
+次にヒートマップです。これ描けると何かそれっぽいです。上のコードを利用して各水準の組み合わせのカウントデータを色分けします。  
+
+```{r}
+diamonds %>%
+  count(cut, color) %>%
+  ggplot(aes(color, cut)) +
+  geom_tile(aes(fill = n))
+```
+
+続いて、縦軸横軸が連続変数の場合は、geom_bin2d が使えます。  
+
+```{r}
+ggplot(diamonds) +
+  geom_bin2d(aes(carat, price))
+```
+
+色が見づらい、という場合は変更可能です。
+
+```{r}
+ggplot(diamonds) +
+  geom_bin2d(aes(carat, price)) +
+  scale_fill_gradientn(colors = rainbow(7))
+```
+
+```{r}
+ggplot(diamonds) +
+  geom_bin2d(aes(carat, price)) +
+  scale_fill_gradient(low = "black", high = "white")
+```
+
+色の指定方法はたくさんあるので、こんな色づけできる？と思ったらご質問ください。  
+
+ところでここまでの例は色付けをカウントデータにしていましたが、指定した変数で色付けすることも可能です。  
+
+```{r}
+ggplot(diamonds, aes(cut, cut_number(carat, 15), fill = price)) +
+  geom_tile(col = "black", size = 0.5) +
+  scale_fill_gradientn(colors =heat.colors(10))
+```
+
+今回使っているデータでは、ダイヤモンドの価格は cut の良し悪しにはあまり依存せず、ダイヤの大きさ carat の影響が大きいようです。  
+なお、この例では、連続変数である carat を、cut_number で区分け数を指定して離散変数にしています。
+
+## facet_wrap, facet_grid - 図を水準ごとに分けて描く  
+
+前項はマーカーの大きさや色によって軸を増やしましたが、もう一つの方法がファセットです。  
+
+* facet_wrap：1軸増やす  
+* facet_grid：2軸増やす  
+
+という使い分けです。  
+
+```{r}
+# facet_wrap
+ggplot(diamonds, aes(carat, price)) +
+  geom_point() +
+  facet_wrap(~cut, ncol = 2)
+```
+
+```{r}
+# facet_grid
+ggplot(diamonds, aes(carat, price)) +
+  geom_point() +
+  facet_grid(color~cut)
+```
+
+ちなみに color はダイヤの色で、Jが最悪、Dが最良の指標です。D の方が carat に対する価格の勾配が大きいようです。  
+
 ## 練習問題 
 
-### 問題1：geom_pointとgeom_smooth
+### 問題1：geom_pointとgeom_smooth  
 
-![練習問題1](exercise1.png)
+データセット：mpg について、次の図を描くのにトライしてみてください。 
+  
+![練習問題1-1](./exercise/ex1-1.png)
 
-↑Shift + Clickで拡大図になります。  
+↑Shift + Clickで拡大図になります。    
+
+![練習問題1-2](./exercise/ex1-2.png)
+![練習問題1-3](./exercise/ex1-3.png)
+
+![練習問題1-4](./exercise/ex1-4.png)
+
+![練習問題1-5](./exercise/ex1-5.png)
+
+![練習問題1-](./exercise/ex1-6.png)
 
 ### 問題2：geom_boxplot  
 
@@ -317,7 +506,186 @@ ggplot(price.mean, aes(fill = cut)) +          # geom_bar も fill で色分け�
 2) そのうち、離散変数は何か。
 3) いずれかの離散変数に対して、price の箱ひげ図を描く。  
 
+### 問題3: geom_bar  
+
+データセット：mpg について、次の図を描くのにトライしてみてください。  
+
+![練習問題3-1](./exercise/ex3-1.png)
+
+![練習問題3-2](./exercise/ex3-2.png)
+
+ヒント：黒い枠線は col = "black" で描けます。  
+
+![練習問題3-3](./exercise/ex3-3.png)
+
+ヒント：cyl は連続変数のため、factor(cyl）とすることでファクタ（離散値）に変換できます。  
+
+![練習問題3-4](./exercise/ex3-4.png)
+
+## 問題4 3軸グラフ  
+
+データセット mpg について、どんなものでも良いので 3軸グラフを描いてみましょう。  
+自分が面白いと思う変数の組み合わせを探してみるのも良い練習になると思います。  
 
 
+## 問題5 ファセット
+
+データセット mpg について、次の図を書いてみましょう。
+
+![練習問題5](./exercise/ex5.png)
+
+# 図を見やすくする  
+
+ここまでいろいろな geom を紹介してきましたが、図が見づらいと思う部分もあったと思います。そういう場合、いろいろなデコレーションをすることができます。ここでは以下の内容を紹介します。  
+
+* グラフ全体の体裁を変える  
+* 軸にタイトルをつける  
+* グラフにタイトルをつける  
+* グラフの文字の大きさを変える  
+* グラフの表示範囲を変更する  
+* グラフの目盛を変える  
+* 目盛線の体裁を変える
+* 軸を入れ替える  
+
+ここでは、geom は以下のものを使い、使いまわしますので変数に代入しておきます。  
+
+```{r}
+p <- ggplot(mpg, aes(displ, hwy, col = class)) + 
+  geom_point()
+p
+```
+
+## theme_** - グラフ全体の体裁を変える 
+
+デフォルトのテーマは今まで見てきた色合いですが、これは変えられます。下のチャンク内で、theme まで入力すると、候補がいろいろ出てくると思いますが、そのうち上側のものです。ここでは、theme_bw を使ってみます。  
+
+```{r}
+p + theme_bw()   # () を忘れずに
+```
+
+少し印象変わったのが分かるでしょうか。他のものも試してみてください。  
+
+## labs or scale ファミリー - 軸にタイトルをつける  
+
+デフォルトでは変数名が表示されますが、自由に変更できます。やり方は labs と scale ファミリーの2つがあります。簡単なのは labs です。  
+
+```{r}
+p + labs(x = "排気量", y = "高速道路上の燃費")
+```
+
+scale　ファミリーはちょっと長いですが、軸の目盛りを変更するときなどに使うので、一緒に設定したいときに使ったりします。  
+
+```{r}
+p + 
+  scale_x_continuous(name = "排気量") +
+  scale_y_continuous(name = "高速道路上の燃費")
+```
+
+labs, scale ファミリーともに、タイトルをダブルクォーテーションで囲うのを忘れずに。  
+
+
+## labs or ggtitle - グラフにタイトルをつける  
+
+グラフ自体にタイトルをつけたいときは、前項と同じく labs を使うか、ggtitle を使います。これはどっちでも良いです。  
+
+```{r}
+p + labs(title = "クルマの排気量 vs 高速道路上の燃費", subtitle = "〜mpg データセット〜")
+```
+
+```{r}
+p + ggtitle("クルマの排気量 vs 高速道路上の燃費", subtitle = "〜mpg データセット〜", hjust)
+```
+
+タイトルを真ん中に配置したいときは、theme を追加してください。  
+
+```{r}
+p +
+  ggtitle("クルマの排気量 vs 高速道路上の燃費", subtitle = "〜mpg データセット〜") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjus = 0.5))
+```
+
+なお、すべてのグラフに真ん中のタイトルをつけたいときは、下記を実行しておくと theme の指定は不要です。
+
+```{r}
+theme_update(plot.title = element_text(hjust = 0.5))
+```
+
+# thme - グラフの文字の大きさを変える  
+
+グラフにはいろいろなところに文字列が表示されていますが、全体（といっても、グラフタイトル、軸のタイトル、凡例のタイトルは別れている）の指定の他、個別の指定（軸ごとにタイトルの大きさ変える、など）も可能です。  
+
+```{r}
+# 全体の大きさを変える：全文字列に適用
+p + 
+  ggtitle("クルマの排気量 vs 高速道路上の燃費") +
+  theme(text = element_text(size = rel(4)),
+        plot.title = element_text(size = rel(4)),
+        legend.text = element_text(size = rel(3)))
+```
+
+## scale_x_continuous, scale_y_continuous -  グラフの表示範囲を変更する、目盛を変える 
+
+特に軸が連続変数の場合、特定の領域に制限してプロットしたいときがあると思います。これには、軸タイトルの設定でも出てきた scale ファミリーの内、scale_x_continuous, scale_y_continuous を使います。  
+
+```{r}
+# 表示範囲を変える
+p + 
+  scale_x_continuous(limits = c(4,7)) +
+  scale_y_continuous(limits = c(10, 30))
+```
+
+目盛の間隔を変えたいときは、breaks を設定します。breaks には、刻みのベクトル（データ列）を指定する必要があります。例えば、x軸を 1, 1.5, 2 ...、y軸を 10, 12.5, 15.0, ... としたい場合は、R の関数 seq() を使うと簡単です。  
+
+```{r}
+# 目盛りを変える
+p + 
+  scale_x_continuous(breaks = seq(1, 7, by = 0.5)) +
+  scale_y_continuous(breaks = seq(10, 50, by = 2.5))
+```
+
+seq() は sequential（シーケンシャル）の意味で、等間隔に増えるベクトルを作る関数です。上で使ったデータの中身を見てみると、
+
+```{r}
+seq(1, 7, by = 0.5)   # Ctrl + Enter で実行
+```
+
+scale_x_continuous の breaks は、このデータにしたがって目盛の刻みを指定するようになっています。  
+
+##  目盛線の体裁を変える - theme 再び  
+
+印刷すると目盛線が消えてしまう、とかそもそも表示したくない、とかいうときに使います。  
+
+```{r}
+# 目盛線の色や太さを変える
+p + 
+  theme(
+    panel.border = element_rect(color = "black", fill = NA),
+    panel.grid.major = element_line(color = "black", size = 0.3),
+    panel.grid.minor = element_line(color = "black", size = 0.3)
+    )
+```
+
+非表示にする場合は、次のように指定します。
+
+```{r}
+# 目盛線を非表示にする
+p + 
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+    )
+```
+
+# cood_flip - 軸を入れ替える
+
+棒グラフや箱ひげ図のときに、ラベルが見えにくいなどの理由で変更したいときがあります。  
+
+```{r}
+ggplot(diamonds, aes(cut, price)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+今回は以上で終了です。次回は、データセットの作り方について、基礎の基礎から紹介します。  
 
 

@@ -1,4 +1,0 @@
-"0","# データに適合する"
-"0","ggplot(mpg, aes(displ, hwy)) +"
-"0","  geom_point() +"
-"0","  geom_smooth(method = ""lm"") "

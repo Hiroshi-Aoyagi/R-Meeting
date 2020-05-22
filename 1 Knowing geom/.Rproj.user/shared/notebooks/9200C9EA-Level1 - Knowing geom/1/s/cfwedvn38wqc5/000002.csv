@@ -1,4 +1,4 @@
 "0","# データに適合する曲線を描く"
 "0","ggplot(mpg, aes(displ, hwy)) +"
 "0","  geom_point() +"
-"0","  geom_smooth(method = ""loess"")  # 線形回帰"
+"0","  geom_smooth(method = ""loess"")  # loess による適合"
